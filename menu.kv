@@ -1,0 +1,43 @@
+
+
+
+
+
+
+
+<MenuWidget>:
+    orientation: "vertical"
+    BoxLayout:
+        orientation: "horizontal"
+        Label:
+            text: "User Name"
+        TextInput:
+            multiline: False
+            on_text_validate: root.on_text_validate(self)
+
+
+
+    BoxLayout:
+        orientation: "horizontal"
+        Label:
+            text: "Level"
+        BoxLayout:
+            orientation: "vertical"
+            Button:
+                text: "Easy"
+                on_press: root.on_button_click_e(self)
+            Button:
+                text:"Normal"
+                on_press: root.on_button_click_m(self)
+                #size_hint:1/3,None
+            Button:
+                text:"Difficult"
+                on_press: root.on_button_click_d(self)
+                #size_hint:1/3,None
+
+    Button:
+        text: "START"
+        disabled: not root.start_enabled
+        on_state: root.on_toggle_click(self)
+
+

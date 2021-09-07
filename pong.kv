@@ -1,0 +1,70 @@
+#:kivy 1.0.9
+
+<Hero>:
+    size: 50,50
+    canvas:
+        Color:
+            rgb:
+                0,1,0,1
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+
+<PongBall>:
+    size: 50, 50
+    canvas:
+        Color:
+            rgb:
+                1,0,0,1
+        Ellipse:
+            #pos: self.center_x-root.posx*100,self.center_y-root.posy*100
+            pos: self.pos
+            size: self.size
+
+
+
+
+
+
+<PongGame>:
+    ball1: pong_ball1
+    ball2: pong_ball2
+    ball3: pong_ball3
+    hero: hero1
+
+    Label:
+        font_size: 20
+        center_x: root.width / 8
+        top: root.top-5
+        text: "Highest Score "+str(root.hero.hscore)
+
+    Label:
+        font_size: 20
+        center_x: root.width * 3 / 8
+        top: root.top - 5
+        text: "Score "+str(root.hero.score)
+
+    Button:
+        font_size: 20
+        center_x: root.width*5 / 8
+        top: root.top-5
+        text: "Start/Re"
+        on_press: root.on_button_click_s(self)
+        #disabled: root.state_game_over
+
+
+
+
+    PongBall:
+        id: pong_ball1
+        center: self.parent.center_x+100*root.px,self.parent.center_y-+100*root.py
+    PongBall:
+        id: pong_ball2
+        center: self.parent.center
+    PongBall:
+        id: pong_ball3
+        center: self.parent.center_x-200*root.px,self.parent.center_y+100*root.py
+    Hero:
+        id: hero1
+
